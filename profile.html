@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+         body {
+            background-color: #121212;
+            color: #edf2f4;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #2b2d42;
+            padding: 15px 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #06d6a0;
+        }
+        .login {
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            margin-left: 10px;
+            cursor: pointer;
+            border: 2px solid #06d6a0;
+            color: #06d6a0;
+            background: transparent;
+        }
+        .signup {
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            margin-left: 10px;
+            background-color: #06d6a0;
+            color: #121212;
+            border: 2px solid #06d6a0;
+        }
+        .content {
+            padding: 30px 25px;
+        }
+        .title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .title1 {
+            font-size: 28px;
+            font-weight: 800;
+            color: #06d6a0;
+            padding: 15px 30px;
+            border-radius: 8px;
+            background-color: #1a759f;
+            display: inline-block;
+        }
+        .ques {
+            display: inline;
+            text-decoration: none;
+            color: #67caf5;
+        }
+        .s {
+            margin-top: 40px;
+        }
+        .s-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: rgb(6, 214, 160);
+            border-left: 4px solid rgb(6, 214, 160);
+            padding-left: 15px;
+        }
+        .l {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 20px;
+        }
+        .l-text {
+            font-size: 14px;
+        }
+        .ask{
+            padding: 8px 30px;
+            border-radius: 20px;
+            border: none;
+            background-color: rgb(63, 62, 62);
+            color: white;
+            width:95%;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            color: #8d99ae;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .pro {
+            text-decoration: none;
+            color:  rgb(6, 214, 160);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">DSA Stack Exchange</div>
+        <details>
+            <summary>User Menu</summary>
+            <ul>
+                <li><a href="home1.html" class="pro">Home</a></li>
+                <li><a href="profile.html" class="pro">Profile</a></li>
+                <li><a href="settings.html" class="pro">Settings</a></li>
+                <li><a href="home.html" class="pro">Log Out</a></li>
+            </ul>
+        </details>
+    </header>
+    
+    <div class="content">
+        <div class="title">
+            <span class="title1">Profile</span>
+        </div>
+        
+        <div class="s">
+            <div class="s-title">User Information</div>
+            <div class="l">
+                <p><strong>Username:</strong><span id="username"></span></p>
+                <p><strong>Email:</strong><span id="email"></span></p>
+            </div>
+        </div>
+        
+        <div class="s">
+            <div class="s-title">Activity</div>
+            <div class="l">
+                <p id="asked"><strong>Questions Asked:</strong> </p>
+                <p id="given"><strong>Answers Given:</strong> </p>
+                <p><strong>Reputation:</strong> 150</p>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>DSA Stack Exchange @ 2025 - Designed by <a href="https://github.com/samdha1">Sameer Dhawas</a></p>
+    </footer>
+</body>
+<script>
+    document.getElementById("asked").innerHTML += localStorage.getItem("asked");
+    document.getElementById("given").innerHTML += localStorage.getItem("given");
+    document.getElementById("username").innerHTML = localStorage.getItem("username");
+    document.getElementById("email").innerHTML = localStorage.getItem("email");
+</script>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: #121212;
+            color: #edf2f4;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #2b2d42;
+            padding: 15px 25px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgb(33, 32, 32);
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color:  rgb(6, 214, 160);
+        }
+        .login {
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #2b2d42;
+            margin: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            width: 400px;
+            text-align: center;
+        }
+        a {
+            text-decoration: none;
+            color:  rgb(6, 214, 160);
+        }
+        a:hover {
+            text-decoration: underline;
+            color:rgb(197, 57, 57)
+        }
+        .forgot {
+            margin-left: 100px;
+        }
+        .signup {
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            margin-left: 10px;
+            background-color:  rgb(6, 214, 160);
+            color: #121212;
+            border: 2px solid rgb(6, 214, 160);
+            width: 200px;
+        }
+        .imge {
+            width: 50px;
+            height: 50px;
+        }
+        input[type="text"], input[type="email"], input[type="password"] {
+            padding: 8px;
+            margin: 5px;
+            border-radius: 5px;
+            border: 1px solid #2b2d42;
+            width: 200px;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            color: #8d99ae;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">DSA Stack Exchange</div>
+    </header>
+    <div style=" justify-items: center;" >
+        <form action="login.html" class="login">
+         <h2>Create Your credentials</h2>
+         <table>
+            <tr>
+               <td><label for="username">Username:</label></td>
+               <td><input type="text" id="username" name="username" required placeholder="name"></td>
+            </tr>
+            <tr>
+                <td><label for="email">Email:</label></td>
+                <td><input type="email" id="email" name="email" required placeholder="email"></td>
+            </tr>
+            <tr>
+                <td><label for="password">Password:</label></td>
+                <td><input type="password" id="password" name="password" required placeholder="password"></td>
+            </tr>
+            <tr>
+                <td><label for="repassword">Re-enter Password:</label></td>
+                <td><input type="password" id="repassword" name="repassword" required placeholder="Re-enter Password"></td>
+            </tr>
+         </table>
+            <input type="checkbox" id="terms" name="terms" required>
+            <label for="terms">I agree to the Terms of Service and Privacy Policy</label><br><br>
+            <button type="submit" class="signup" onclick="return checked()">SignUp</button><br><br>
+        </form>
+    </div>
+    <footer>
+        <p>DSA Stack Exchange @ 2025 - Designed by <a href="https://github.com/samdha1">Sameer Dhawas</a></p>
+    </footer>
+</body>
+<script>
+    function checked() {
+    var username=document.getElementById("username");
+    var password=document.getElementById("password");
+    var repassword=document.getElementById("repassword");
+    var terms=document.getElementById("terms");
+    var email=document.getElementById("email");
+    var x=true;
+    var y=false; 
+    var z=false; 
+    if(username.value.trim()==="") {
+        alert("Username cannot be empty");
+        x=false;
+    }
+    if(password.value.trim()==="") {
+        alert("Password cannot be empty");
+        x=false;
+    }
+    if(repassword.value.trim()==="") {
+        alert("Re-enter Password cannot be empty");
+        x=false;
+    }
+    if(password.value!==repassword.value) {
+        alert("Password and Re-enter Password should be the same");
+        x=false;
+    }
+    if(!terms.checked) {
+        alert("Please agree to the terms and conditions");
+        x=false;
+    }
+    for(var i=0;i<email.value.length;i++) {
+        if(email.value[i]=='@') {
+            z=true;
+            break;
+        }
+    }
+    if(email.value.trim()===""||!z) {
+        alert("Please enter a valid email address");
+        x=false;
+    }
+    if(password.value.length<8) {
+        alert("Password should be at least 8 characters long");
+        x=false;
+    }
+    for(var i=0;i<password.value.length;i++) {
+        if(password.value[i]=='@'||password.value[i]=='.'||password.value[i]=='#'||password.value[i]=='$'||password.value[i]=='%'||password.value[i]=='&') {
+            y=true;
+            break;
+        }
+    }
+    if(!y) {
+        alert("Password should contain at least one special character (@, #, $, %, &,.)");
+        x=false;
+    }
+    if(x) {
+        localStorage.setItem("username",username.value.trim());
+        localStorage.setItem("password",password.value.trim());
+        localStorage.setItem("email",email.value.trim());
+        return true;
+    } 
+    else {
+        password.value="";
+        repassword.value="";
+        return false;
+    }
+}
+</script>
+</html>

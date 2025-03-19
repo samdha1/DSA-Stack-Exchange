@@ -1,0 +1,220 @@
+<!DOCTYpE html>
+<html>
+<head>
+    <style>
+         body {
+            background-color: #121212;
+            color: #edf2f4;
+            font-family: 'Segoe uI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #2b2d42;
+            padding: 15px 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #06d6a0;
+        }
+        .login {
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            margin-left: 10px;
+            cursor: pointer;
+            border: 2px solid #06d6a0;
+            color: #06d6a0;
+            background: transparent;
+        }
+        .signup {
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            margin-left: 10px;
+            background-color: #06d6a0;
+            color: #121212;
+            border: 2px solid #06d6a0;
+        }
+        .content {
+            padding: 30px 25px;
+        }
+        .title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .title1 {
+            font-size: 28px;
+            font-weight: 800;
+            color: #06d6a0;
+            padding: 15px 30px;
+            border-radius: 8px;
+            background-color: #1a759f;
+            display: inline-block;
+        }
+        .ques {
+            display: inline;
+            text-decoration: none;
+            color: #67caf5;
+        }
+        .s {
+            margin-top: 40px;
+        }
+        .s-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: rgb(6, 214, 160);
+            border-left: 4px solid rgb(6, 214, 160);
+            padding-left: 15px;
+        }
+        .l {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 20px;
+        }
+        .ask{
+            padding: 8px 30px;
+            border-radius: 20px;
+            border: none;
+            background-color: rgb(63, 62, 62);
+            color: white;
+            width:95%;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            color: #8d99ae;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .pro {
+            text-decoration: none;
+            color:  rgb(6, 214, 160);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">DSA Stack Exchange</div>
+        <details>
+            <summary>User Menu</summary>
+            <ul>
+                <li><a href="home1.html" class="pro">Home</a></li>
+                <li><a href="profile.html" class="pro">Profile</a></li>
+                <li><a href="settings.html" class="pro">Settings</a></li>
+                <li><a href="home.html" class="pro">Log Out</a></li>
+            </ul>
+        </details>
+    </header>
+    
+    <div class="content">
+        <div class="title">
+            <span class="title1">Settings</span>
+        </div>
+        
+        <div class="s">
+            <div class="s-title">Change Username</div>
+            <div class="l">
+                <label for="oldusername">Old Username:</label>
+                <input type="text" id="oldusername" class="ask" >
+            </div>
+            
+            <div class="l">
+                <label for="newusername">New Username:</label>
+                <input type="text" id="newusername" class="ask" >
+            </div>
+
+            <div class="l">
+                <label for="chusername">Re-Enter Username:</label>
+                <input type="text" id="chusername" class="ask" >
+            </div>
+
+            <button type="button" class="signup" onclick="changeusername()">Conform</button>
+        </div>
+        
+        <div class="s">
+            <div class="s-title">Change Passwords</div>
+            <div class="l">
+                <label for="oldpassword">Old Password:</label>
+                <input type="password" id="oldpassword" class="ask" >
+            </div>
+            
+            <div class="l">
+                <label for="newpassword">New Password:</label>
+                <input type="password" id="newpassword" class="ask" >
+            </div>
+
+            <div class="l">
+                <label for="chpassword">Re-Enter Password:</label>
+                <input type="password" id="chpassword" class="ask" >
+            </div>
+
+            <button type="button" class="signup" onclick="changepassword()">Conform</button>
+        </div>
+
+        <div class="s">
+            <div class="s-title">Preferences</div>
+            <div class="l s">
+                <label>
+                    <input type="checkbox" id="email" onclick="check()"> Email Notifications
+                </label>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>DSA Stack Exchange @ 2025 - Designed by <a href="https://github.com/samdha1">Sameer Dhawas</a></p>
+    </footer>
+    
+    <script>
+      function changeusername() {
+    var oldusername=document.getElementById("oldusername").value.trim();
+    var newusername=document.getElementById("newusername").value.trim();
+    var confirmusername=document.getElementById("chusername").value.trim();
+    if(oldusername===""||newusername===""||confirmusername==="") {
+        alert("Please fill all the fields.");
+        return;
+    }
+    if(newusername!==confirmusername) {
+        alert("New Username and Re-entered Username do not match.");
+        return;
+    }
+    localStorage.setItem("username",newusername);
+    alert("Username successfully updated!");
+}
+
+    function changepassword() {
+    var oldpassword=document.getElementById("oldpassword").value.trim();
+    var newpassword=document.getElementById("newpassword").value.trim();
+    var confirmpassword=document.getElementById("chpassword").value.trim();
+    if(oldpassword===""||newpassword===""||confirmpassword==="") {
+        alert("Please fill all the fields.");
+        return;
+    }
+    if (newpassword!==confirmpassword) {
+        alert("New Password and Re-entered Password do not match.");
+        return;
+    }
+    localStorage.setItem("password",newpassword);
+    alert("Password successfully updated!");
+    }
+
+    function check() {
+    var email=document.getElementById("email");
+    if(email.checked) {
+        alert("Email Notifications enabled.");
+    } else {
+        alert("Email Notifications disabled.");
+    }
+}
+</script>
+</body>
+</html>

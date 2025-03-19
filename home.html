@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DSA Stack Exchange - Data Structures and Algorithms</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #edf2f4;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #2b2d42;
+            padding: 15px 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #06d6a0;
+        }
+        .search{
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: none;
+            background-color: rgb(63, 62, 62);
+            color: white;
+            width: 300px;
+        }
+        .login {
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            margin-left: 10px;
+            cursor: pointer;
+            border: 2px solid #06d6a0;
+            color: #06d6a0;
+            background: transparent;
+        }
+        .signup {
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            margin-left: 10px;
+            cursor: pointer;
+            background-color: #06d6a0;
+            color: #121212;
+            border: 2px solid #06d6a0;
+        }
+        .content {
+            padding: 30px 25px;
+        }
+        .title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .title1 {
+            font-size: 28px;
+            font-weight: 800;
+            color: #06d6a0;
+            padding: 15px 30px;
+            border-radius: 8px;
+            background-color: #1a759f;
+            display: inline-block;
+        }
+        .ques {
+            display: inline;
+            text-decoration: none;
+            color: #67caf5;
+        }
+        .s {
+            margin-top: 40px;
+        }
+        .s-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: rgb(6, 214, 160);
+            border-left: 4px solid rgb(6, 214, 160);
+            padding-left: 15px;
+        }
+        .l {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 20px;
+            transition: transform 0.3s ease;
+        }
+        .l:hover {
+            transform: translateY(-5px);
+            background-color: rgb(63, 63, 63);
+        }
+        .l-text {
+            font-size: 14px;
+        }
+        .ask{
+            padding: 8px 30px;
+            border-radius: 20px;
+            border: none;
+            background-color: rgb(63, 62, 62);
+            color: white;
+            width:95%;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            color: #8d99ae;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">DSA Stack Exchange</div>
+        
+        <input type="text" class="search" placeholder="Search for questions...">
+        
+        <div >
+            <a href="login.html" class="login">Log In</a>
+            <a href="signup.html" class="signup">Sign Up</a>
+        </div>
+    </header>
+
+    <div class="content">
+        <div class="title">
+            <span class="title1">DATA STRUCTURES AND ALGORITHMS</span>
+        </div>
+        
+        <div class="s">
+            <h2 class="s-title">Top Questions</h2>
+            <div>
+                <div class="l" id="question1">
+                    <p class="l-text"><a href="#" class="ques" onclick="tell()">Explain Dijkstra's Algorithm...</a></p>
+                </div>
+
+                <br>
+
+                <div class="l" id="question2">
+                    <p class="l-text"><a href="#" class="ques" onclick="tell()">How does a Red-Black tree maintain balance?</a></p>
+                </div>
+            </div>
+        </div>
+       
+        <div class="s">
+            <h2 class="s-title">Ask Questions</h2>
+            <input type="text" class="ask" placeholder="Enter Your Question" onclick="tell()">
+        </div>
+    
+    <footer>
+        <p>DSA Stack Exchange @ 2025 - Designed by <a href="https://github.com/samdha1">Sameer Dhawas</a></p>
+    </footer>
+</body>
+<script >
+    function tell() {
+        alert("Please Log In to ask or see the questions");
+    }
+</script>
+</html>
