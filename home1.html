@@ -196,11 +196,12 @@
         } 
         else {
             var p=document.getElementById("result");
-            var ans='<a href="#" class="ques" onclick="opene(\'question' + count + '\')" id="question' + count + '">' +
-                           '<div class="l" id="question' + count + '">' +
-                          '<p class="l-text"><span id="question' + count + '">' + arr[i] + '</span></p>' +
-                            '</div>' +
-                          '</a><br>';
+          var ans='<a href="#" class="ques" onclick="opene(\'question' + count + '\')" id="question' + count + '">' +
+        '<div class="l" id="question' + count + '">' +
+        '<p class="l-text"><span id="question' + count + '">' + question + '</span></p>' +
+        '</div>' +
+        '</a><br>';
+
             p.innerHTML+=ans; 
             document.getElementById("tell").value=""; 
             count++; 
