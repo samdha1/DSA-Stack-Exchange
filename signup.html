@@ -162,10 +162,17 @@
         x=false;
     }
     if(x) {
-        localStorage.setItem("username",username.value.trim());
-        localStorage.setItem("password",password.value.trim());
-        localStorage.setItem("email",email.value.trim());
-        return true;
+            var data=localStorage.getItem("users");
+            var arr=data?data.split(';'):[];
+            var nuser=username.value.trim() + ',' + email.value.trim() + ',' + password.value.trim();
+            arr.push(nuser);
+            localStorage.setItem("users",arr.join(';'));
+            username.value="";
+            password.value="";
+            repassword.value="";
+            email.value="";
+            alert("Sign up successful!");
+            return true;
     } 
     else {
         password.value="";
