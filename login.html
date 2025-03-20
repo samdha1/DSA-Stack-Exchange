@@ -104,27 +104,34 @@
 </body>
     <script >
     function check() {
-    var user=document.getElementById("username").value.trim();
-    var pass=document.getElementById("password").value.trim();
-    var username=localStorage.getItem("username");
-    var password=localStorage.getItem("password");
-    if (user===""||pass==="") {
-        alert("Please fill all fields");
-        return false;
+        var user=document.getElementById("username").value.trim();
+        var pass=document.getElementById("password").value.trim();
+        var users=localStorage.getItem("users"); 
+        if (!users) {
+            alert("No account found. Please sign up first.");
+            return false;
+        }
+        var arr=users.split(';'); 
+        var found=false; 
+        for (var i=0;i<arr.length;i++) {
+            var data=arr[i].split(','); 
+            var username=data[0]; 
+            var email=data[1]; 
+            var password=data[2];
+            if (user===username&&pass===password) {
+                found=true;
+                alert("Login successful! Welcome " + username);
+                localStorage.setItem("email",email); 
+                localStorage.setItem("username",username);
+                localStorage.setItem("password",password);
+                break;
+            }
+        }
+        if (!found) {
+            alert("Incorrect username or password");
+            return false;
+        }
+        return true;
     }
-    if (!username||!password) {
-        alert("No account found. Please sign up first.");
-        return false;
-    }
-    if (user!==username) {
-        alert("Username not found");
-        return false;
-    }
-    if (pass!==password) {
-        alert("Incorrect password");
-        return false;
-    }
-    return true;
-}
     </script>
 </html>
