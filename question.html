@@ -86,7 +86,7 @@
         <div class="qbox" id="show"></div>
         <div id="ans" class="commentsec"></div>
         <textarea id="ansbox" class="cbox" placeholder="Add Your Answer..."></textarea>
-        <button class="signup" onclick="addComment()">Answer</button>
+        <button class="signup" onclick="addComment()" >Answer</button>
     </div>
 
     <script>
@@ -115,7 +115,7 @@
                 alert("Please enter a comment");
             } 
             else {
-                comment = comment + "   " + "By " + "  " + user;
+                comment = comment + "   " +' <span style="font-size: smaller;"> " By "' + user + '</span'>
                 comments.push(comment);
                 localStorage.setItem(commentsstorage,comments.join("|||"));
                 display();
