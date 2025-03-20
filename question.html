@@ -96,6 +96,7 @@
         var comments=localStorage.getItem(commentsstorage);
         comments=comments?comments.split("|||") : [];
         var count=localStorage.getItem("given")||0;
+        var user=localStorage.getItem("username");
 
         function display() {
             var ans=document.getElementById("ans");
@@ -115,6 +116,7 @@
             } 
             else {
                 comments.push(comment);
+                comments.push("By" + user);
                 localStorage.setItem(commentsstorage,comments.join("|||"));
                 display();
                 document.getElementById("ansbox").value = "";
