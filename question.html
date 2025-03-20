@@ -104,7 +104,7 @@
             for (var i=0;i<comments.length;i++) {
                 var temp=document.createElement("p");
                 temp.className="comment";
-                temp.textContent=comments[i];
+                temp.innerHTML=comments[i];
                ans.appendChild(temp);
             }
         }
