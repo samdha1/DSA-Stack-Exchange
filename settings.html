@@ -175,7 +175,7 @@
     </footer>
     
     <script>
-      function changeusername() {
+    function changeusername() {
     var oldusername=document.getElementById("oldusername").value.trim();
     var newusername=document.getElementById("newusername").value.trim();
     var confirmusername=document.getElementById("chusername").value.trim();
@@ -187,15 +187,33 @@
         alert("New Username and Re-entered Username do not match.");
         return;
     }
-    localStorage.setItem("username",newusername);
-    alert("Username successfully updated!");
+    var users=localStorage.getItem("users");
+    var arr=users ? users.split(';') : [];
+    var updated=false;
+    for (var i=0;i<arr.length;i++) {
+        var user=arr[i].split(',');
+        if (user[0]===oldusername) {
+            user[0]=newusername;  
+           arr[i]=user.join(','); 
+            updated=true;
+            break;
+        }
+    }
+    if (updated) {
+        localStorage.setItem("users",arr.join(';'));
+        localStorage.setItem("username",newusername);
+        alert("Username successfully updated!");
+    } 
+    else {
+        alert("Old Username not found.");
+    }
 }
 
-    function changepassword() {
+function changepassword() {
     var oldpassword=document.getElementById("oldpassword").value.trim();
     var newpassword=document.getElementById("newpassword").value.trim();
     var confirmpassword=document.getElementById("chpassword").value.trim();
-    if(oldpassword===""||newpassword===""||confirmpassword==="") {
+    if (oldpassword===""||newpassword===""||confirmpassword==="") {
         alert("Please fill all the fields.");
         return;
     }
@@ -203,16 +221,25 @@
         alert("New Password and Re-entered Password do not match.");
         return;
     }
-    localStorage.setItem("password",newpassword);
-    alert("Password successfully updated!");
+    var users=localStorage.getItem("users");
+    var arr=users ? users.split(';') : [];
+    var updated=false;
+    for (var i=0;i <arr.length;i++) {
+        var user=arr[i].split(',');
+        if (user[1]===oldpassword) {
+            user[1]=newpassword; 
+           arr[i]=user.join(','); 
+            updated=true;
+            break;
+        }
     }
-
-    function check() {
-    var email=document.getElementById("email");
-    if(email.checked) {
-        alert("Email Notifications enabled.");
-    } else {
-        alert("Email Notifications disabled.");
+    if (updated) {
+        localStorage.setItem("users",arr.join(';'));
+        localStorage.setItem("password", newpassword);
+        alert("Password successfully updated!");
+    } 
+    else {
+        alert("Old Password not found.");
     }
 }
 </script>
