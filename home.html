@@ -133,21 +133,27 @@
         </div>
         
         <div class="s">
-            <h2 class="s-title">Top Questions</h2>
-            <div>
-                <div class="l" id="question1">
-                    <p class="l-text"><a href="#" class="ques" onclick="tell()">How does one go about proving that the lowest possible time complexity for traversing an array is O(n)
-                        ?, it is easy to see that this is the case. But how could I formally prove that this is true?, that there is no possible algorithm that is faster than O(n)
-                        ?, given that there's an infinite amount of potential algorithms, is this even possible?</a></p>
-                </div>
-
-                <br>
-
-                <div class="l" id="question2">
-                    <p class="l-text"><a href="#" class="ques" onclick="tell()">Computing a pre-topological sort using a BFS/a queue</a></p>
+            <div class="s" id="topquestion">
+                <h2 class="s-title">Top Questions</h2>
+                <div id="list">
+                    <a href="#" class="ques" onclick="tell()">
+                    <div class="l" id="question1">
+                        <p class="l-text"><span id="q1">How does one go about proving that the lowest possible time complexity for traversing an array is O(n)
+                            ?, it is easy to see that this is the case. But how could I formally prove that this is true?, that there is no possible algorithm that is faster than O(n)
+                            ?, given that there's an infinite amount of potential algorithms, is this even possible?</span></p>
+                    </div>
+                    </a>
+                    <br>
+    
+                    <a href="#" class="ques" onclick="tell()">
+                        <div class="l" id="question2">
+                            <p class="l-text"><span id="q2">Computing a pre-topological sort using a BFS/a queue</span></p>
+                        </div>
+                        </a>
+    
+                    <p id="beforequestions"></p>           
                 </div>
             </div>
-        </div>
        
         <div class="s">
             <h2 class="s-title">Ask Questions</h2>
@@ -159,8 +165,28 @@
     </footer>
 </body>
 <script >
+    var count=3;
     function tell() {
         alert("Please Log In to ask or see the questions");
     }
+
+    function loading() {
+        var totalquestion=localStorage.getItem("questions");
+        var p=document.getElementById("beforequestions");
+        if (totalquestion) {
+            var arr=totalquestion.split("||");
+            for (var i=0;i<arr.length;i++) {
+                var ans='<a href="#" class="ques" onclick="tell()" id="question' + count + '">' +
+                           '<div class="l" id="question' + count + '">' +
+                          '<p class="l-text"><span id="question' + count + '">' + arr[i] + '</span></p>' +
+                            '</div>' +
+                          '</a><br>';
+                p.innerHTML+=ans;
+                count++;
+            }
+        }
+    }
+
+    loading();
 </script>
 </html>
