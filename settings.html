@@ -1,11 +1,13 @@
-<!DOCTYpE html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-         body {
+        body {
             background-color: #121212;
             color: #edf2f4;
-            font-family: 'Segoe uI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
             line-height: 1.6;
@@ -23,27 +25,6 @@
             font-weight: bold;
             color: #06d6a0;
         }
-        .login {
-            padding: 8px 15px;
-            border-radius: 5px;
-            font-weight: 600;
-            text-decoration: none;
-            margin-left: 10px;
-            cursor: pointer;
-            border: 2px solid #06d6a0;
-            color: #06d6a0;
-            background: transparent;
-        }
-        .signup {
-            padding: 8px 15px;
-            border-radius: 5px;
-            font-weight: 600;
-            text-decoration: none;
-            margin-left: 10px;
-            background-color: #06d6a0;
-            color: #121212;
-            border: 2px solid #06d6a0;
-        }
         .content {
             padding: 30px 25px;
         }
@@ -60,11 +41,6 @@
             background-color: #1a759f;
             display: inline-block;
         }
-        .ques {
-            display: inline;
-            text-decoration: none;
-            color: #67caf5;
-        }
         .s {
             margin-top: 40px;
         }
@@ -80,13 +56,13 @@
             border-radius: 8px;
             padding: 20px;
         }
-        .ask{
+        .ask {
             padding: 8px 30px;
             border-radius: 20px;
             border: none;
             background-color: rgb(63, 62, 62);
             color: white;
-            width:95%;
+            width: 95%;
         }
         footer {
             text-align: center;
@@ -97,7 +73,7 @@
         }
         .pro {
             text-decoration: none;
-            color:  rgb(6, 214, 160);
+            color: rgb(6, 214, 160);
         }
     </style>
 </head>
@@ -124,40 +100,40 @@
             <div class="s-title">Change Username</div>
             <div class="l">
                 <label for="oldusername">Old Username:</label>
-                <input type="text" id="oldusername" class="ask" >
+                <input type="text" id="oldusername" class="ask">
             </div>
             
             <div class="l">
                 <label for="newusername">New Username:</label>
-                <input type="text" id="newusername" class="ask" >
+                <input type="text" id="newusername" class="ask">
             </div>
 
             <div class="l">
                 <label for="chusername">Re-Enter Username:</label>
-                <input type="text" id="chusername" class="ask" >
+                <input type="text" id="chusername" class="ask">
             </div>
 
-            <button type="button" class="signup" onclick="changeusername()">Conform</button>
+            <button type="button" class="signup" onclick="changeusername()">Confirm</button>
         </div>
         
         <div class="s">
-            <div class="s-title">Change Passwords</div>
+            <div class="s-title">Change Password</div>
             <div class="l">
                 <label for="oldpassword">Old Password:</label>
-                <input type="password" id="oldpassword" class="ask" >
+                <input type="password" id="oldpassword" class="ask">
             </div>
             
             <div class="l">
                 <label for="newpassword">New Password:</label>
-                <input type="password" id="newpassword" class="ask" >
+                <input type="password" id="newpassword" class="ask">
             </div>
 
             <div class="l">
                 <label for="chpassword">Re-Enter Password:</label>
-                <input type="password" id="chpassword" class="ask" >
+                <input type="password" id="chpassword" class="ask">
             </div>
 
-            <button type="button" class="signup" onclick="changepassword()">Conform</button>
+            <button type="button" class="signup" onclick="changepassword()">Confirm</button>
         </div>
 
         <div class="s">
@@ -175,73 +151,85 @@
     </footer>
     
     <script>
-    function changeusername() {
-    var oldusername=document.getElementById("oldusername").value.trim();
-    var newusername=document.getElementById("newusername").value.trim();
-    var confirmusername=document.getElementById("chusername").value.trim();
-    if(oldusername===""||newusername===""||confirmusername==="") {
-        alert("Please fill all the fields.");
-        return;
-    }
-    if(newusername!==confirmusername) {
-        alert("New Username and Re-entered Username do not match.");
-        return;
-    }
-    var users=localStorage.getItem("users");
-    var arr=users ? users.split(';') : [];
-    var updated=false;
-    for (var i=0;i<arr.length;i++) {
-        var user=arr[i].split(',');
-        if (user[0]===oldusername) {
-            user[0]=newusername;  
-           arr[i]=user.join(','); 
-            updated=true;
-            break;
-        }
-    }
-    if (updated) {
-        localStorage.setItem("users",arr.join(';'));
-        localStorage.setItem("username",newusername);
-        alert("Username successfully updated!");
-    } 
-    else {
-        alert("Old Username not found.");
-    }
-}
+        function changeusername() {
+            var oldusername = document.getElementById("oldusername").value.trim();
+            var newusername = document.getElementById("newusername").value.trim();
+            var confirmusername = document.getElementById("chusername").value.trim();
 
-function changepassword() {
-    var oldpassword=document.getElementById("oldpassword").value.trim();
-    var newpassword=document.getElementById("newpassword").value.trim();
-    var confirmpassword=document.getElementById("chpassword").value.trim();
-    if (oldpassword===""||newpassword===""||confirmpassword==="") {
-        alert("Please fill all the fields.");
-        return;
-    }
-    if (newpassword!==confirmpassword) {
-        alert("New Password and Re-entered Password do not match.");
-        return;
-    }
-    var users=localStorage.getItem("users");
-    var arr=users ? users.split(';') : [];
-    var updated=false;
-    for (var i=0;i <arr.length;i++) {
-        var user=arr[i].split(',');
-        if (user[1]===oldpassword) {
-            user[1]=newpassword; 
-           arr[i]=user.join(','); 
-            updated=true;
-            break;
+            if (oldusername === "" || newusername === "" || confirmusername === "") {
+                alert("Please fill all the fields.");
+                return;
+            }
+
+            if (newusername !== confirmusername) {
+                alert("New Username and Re-entered Username do not match.");
+                return;
+            }
+
+            // Retrieve users from localStorage
+            var users = localStorage.getItem("users");
+            var usersArray = users ? users.split(';') : [];
+
+            // Find the current user (logged-in) by the old username
+            var updated = false;
+            var currentUser = localStorage.getItem("username"); // Get logged-in username
+
+            for (var i = 0; i < usersArray.length; i++) {
+                var user = usersArray[i].split(',');
+
+                if (user[0] === currentUser) {  // Match user by current logged-in username
+                    user[0] = newusername;  // Update username
+                    usersArray[i] = user.join(',');
+                    updated = true;
+                    break;
+                }
+            }
+
+            if (updated) {
+                // Save the updated users array back to localStorage
+                localStorage.setItem("users", usersArray.join(';'));
+                // Update the logged-in username in localStorage
+                localStorage.setItem("username", newusername);
+                alert("Username successfully updated!");
+            } else {
+                alert("User not found.");
+            }
         }
-    }
-    if (updated) {
-        localStorage.setItem("users",arr.join(';'));
-        localStorage.setItem("password", newpassword);
-        alert("Password successfully updated!");
-    } 
-    else {
-        alert("Old Password not found.");
-    }
-}
-</script>
-</body>
-</html>
+
+        function changepassword() {
+            var oldpassword = document.getElementById("oldpassword").value.trim();
+            var newpassword = document.getElementById("newpassword").value.trim();
+            var confirmpassword = document.getElementById("chpassword").value.trim();
+
+            if (oldpassword === "" || newpassword === "" || confirmpassword === "") {
+                alert("Please fill all the fields.");
+                return;
+            }
+
+            if (newpassword !== confirmpassword) {
+                alert("New Password and Re-entered Password do not match.");
+                return;
+            }
+
+            // Retrieve users from localStorage
+            var users = localStorage.getItem("users");
+            var usersArray = users ? users.split(';') : [];
+
+            var updated = false;
+            var currentUser = localStorage.getItem("username");  // Get logged-in username
+
+            for (var i = 0; i < usersArray.length; i++) {
+                var user = usersArray[i].split(',');
+
+                if (user[0] === currentUser && user[1] === oldpassword) {  // Match user by username and password
+                    user[1] = newpassword;  // Update password
+                    usersArray[i] = user.join(',');
+                    updated = true;
+                    break;
+                }
+            }
+
+            if (updated) {
+                // Save the updated users array back to localStorage
+                localStorage.setItem("users", usersArray.join(';'));
+                // Update the logged-in
