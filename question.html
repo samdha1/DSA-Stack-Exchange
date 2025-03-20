@@ -115,7 +115,7 @@
                 alert("Please enter a comment");
             } 
             else {
-                comment = comment + "By" + user;
+                comment = comment + "By " + user;
                 comments.push(comment);
                 localStorage.setItem(commentsstorage,comments.join("|||"));
                 display();
