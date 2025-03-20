@@ -55,14 +55,18 @@
             text-decoration: none;
             color: rgb(6, 214, 160);
         }
-        .commentsec {
+        .answersec {
             margin-top: 20px;
         }
-        .comment {
+        .answer {
             background: #4e4e4e;
             padding: 10px;
             border-radius: 5px;
             margin-top: 10px;
+        }
+        .author {
+            font-size: smaller;
+            color: #06d6a0;
         }
     </style>
 </head>
@@ -84,40 +88,40 @@
 
     <div class="container">
         <div class="qbox" id="show"></div>
-        <div id="ans" class="commentsec"></div>
+        <div id="ans" class="answersec"></div>
         <textarea id="ansbox" class="cbox" placeholder="Add Your Answer..."></textarea>
-        <button class="signup" onclick="addComment()" >Answer</button>
+        <button class="signup" onclick="addanswer()" >Answer</button>
     </div>
 
     <script>
         var text=localStorage.getItem("ss");
         document.getElementById("show").textContent=text;
-        var commentsstorage="discussion_"+text;
-        var comments=localStorage.getItem(commentsstorage);
-        comments=comments?comments.split("|||") : [];
+        var answersstorage="discussion_"+text;
+        var answers=localStorage.getItem(answersstorage);
+        answers=answers?answers.split("|||") : [];
         var count=localStorage.getItem("given")||0;
         var user=localStorage.getItem("username");
 
         function display() {
             var ans=document.getElementById("ans");
            ans.innerHTML="";
-            for (var i=0;i<comments.length;i++) {
+            for (var i=0;i<answers.length;i++) {
                 var temp=document.createElement("p");
-                temp.className="comment";
-                temp.innerHTML=comments[i];
+                temp.className="answer";
+                temp.innerHTML=answers[i];
                ans.appendChild(temp);
             }
         }
 
-        function addComment() {
-            var comment=document.getElementById("ansbox").value.trim();
-            if (comment==="") {
-                alert("Please enter a comment");
+        function addanswer() {
+            var answer=document.getElementById("ansbox").value.trim();
+            if (answer==="") {
+                alert("Please enter a answer");
             } 
             else {
-            comment = comment + ' <span style="font-size: smaller;">By ' + user + '</span>';
-                comments.push(comment);
-                localStorage.setItem(commentsstorage,comments.join("|||"));
+            answer = answer + ' <span class="author">By ' + user + '</span>';
+                answers.push(answer);
+                localStorage.setItem(answersstorage,answers.join("|||"));
                 display();
                 document.getElementById("ansbox").value = "";
                 count++;
