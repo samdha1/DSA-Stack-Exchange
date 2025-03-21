@@ -242,6 +242,18 @@ function changepassword() {
         alert("Old Password not found.");
     }
 }
+function check(){
+     var checked1=document.getElementById("email");
+    var x=checked1.checked;
+    if (x) {
+        localStorage.setItem("notification","enabled");
+        alert("Email Notifications Enabled");
+    } 
+    else {
+        localStorage.setItem("notification","disabled");
+        alert("Email Notifications Disabled");
+    }
+}
 </script>
 </body>
 </html>
